@@ -22,7 +22,7 @@ border-bottom: 1em double #2aae00;
 }
 
 .well {
-	border-radius: 2em;
+	border-radius: 2em; 
 	border: 0.2em solid green;
 }
 
