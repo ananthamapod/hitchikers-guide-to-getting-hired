@@ -1,0 +1,37 @@
+<!-- Worked -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> {% block title %} {% endblock %}Chapter 3 - Networking: Hitchhiker's Guide to Getting Hired</title>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+		<link rel="stylesheet" style="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" style="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
+		<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-34141409-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+		</script>
+	</head>
+	<body>
+		<div class="content container">
+			<header class="jumbotron subhead">
+				<h1> <span class="red"> The Hitchhiker's Guide </span> To Getting Hired </h1>
+			</header>
+			<div class="well clearfix">
+			{% block content %}{% endblock %}
+			</div>
+			<footer>
+				<br/>
+			</footer>
+		</div>
+<a href="https://github.com/ananthamapod"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+</body>
+</html>

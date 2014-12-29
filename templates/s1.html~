@@ -1,0 +1,331 @@
+{% extends 'main.html' %}
+{% block content %}
+<script type="text/javascript">
+
+var name = "{{ name }}";
+var extra = 0;
+var choice = 0;
+var contact = 0;
+var setup;
+var control;
+var perception = 0;
+var confidence = 0;
+var wiifm = 0;
+var nap = 0;
+var runaway = 0;
+var follow = 0;
+
+function s1() {
+    $("#lesson").hide();
+    $("#praise").hide();
+	document.getElementById("prompt").innerHTML = "You're in a career fair. You're standing on line for meeting with recruiters from your target company for your dream job, but you were up very late preparing for the fair and feeling realy tired. What do you do?";
+	document.getElementById("c1").innerHTML = "Lean against the wall and get a little rest while waiting. Don't worry, no one's looking.";
+	document.getElementById("c2").innerHTML = "Leave the fair area and take a nap. You can afford it and you'll feel fresher later.";
+	document.getElementById("c3").innerHTML = "Wake yourself up if necessary with coffee or cold water over your face and come back to the line. Try to feel more alert and don't let your tiredness show (stand straight with open body language).";
+}
+function s1_process() {
+	switch(choice) {
+		case 1:
+			setup = s2;
+			control = s2_process;
+			setup();
+			break;
+		case 2:
+			setup = end;
+			control = s2_process;
+			nap = 1;
+			setup();
+			break;
+		case 3:
+			setup = s2;
+			control = s2_process;
+			perception = 1;
+			setup();
+			break;
+		default:
+			return;
+	}
+	if(!nap) {
+	    extra = Math.round(Math.random());
+	    if(extra == 1) {
+			setup = sextra;
+			control = sextra_process;
+			setup();	        
+	    }
+	}
+}
+
+function sextra() {
+	if(perception) {
+        $("#lesson").show();
+	    $("#praise").show();
+		document.getElementById("praise").innerHTML = "Well Done!";
+		document.getElementById("lesson").innerHTML = "<h4>Lesson</h4>Perception is everything. Someone who sees you as disinterested - possibly a recruiter -  will not want to interact with you as much, and will certainly have a negative impression of you.";
+	} else {
+	    $("#lesson").hide();
+	    $("#praise").hide();
+	}
+	document.getElementById("prompt").innerHTML = "The line seems too long and it doesn't seem likely you will be able to speak to the recruiters of your target company before the fair closes. You notice there are recruiters from companies you aren't targeting who are not currently speaking to anyone.";
+	document.getElementById("c1").innerHTML = "Doesn't matter. Stay on line to get to your target company. Even if the line is too long, if you move quickly, you might be able to dash in just before the recruiters leave and drop your resume on the table.";
+	document.getElementById("c2").innerHTML = "Go speak to the free recruiters even though they aren't from the companies you were interested in applying to.";
+	document.getElementById("c3").innerHTML = "You should leave and find a better use of your time. Obviously, the line to get to your target company is too long, and you won't get much benefit from talking with recruiters from random companies you have no interest in.";
+}
+function sextra_process() {
+	switch(choice) {
+		case 1:
+			setup = end;
+			control = end;
+			setup();
+			break;
+		case 2:
+			setup = s2;
+			control = s2_process;
+			contact = 1;
+			setup();
+			break;
+		case 3:
+			setup = end;
+			control = s2_process;
+			runaway = 1;
+			setup();
+			break;
+		default:
+			return;
+	}
+}
+
+function s2() {
+    if(extra) {
+	    if(contact) {
+            $("#lesson").show();
+	        $("#praise").show();
+		    document.getElementById("praise").innerHTML = "Well Done!";
+		    document.getElementById("lesson").innerHTML = "<h4>Lesson</h4>Every contact is valuable, even if it isn't immediately clear how they might be. Every new person expands your network. One contact might know someone, who knows someone else, who knows someone else, etc. By taking the opportunity to network with new people, you give yourself another chance to get your dream job. Thankfully, your new contact knows a recruiter from your target company and brings you over to meet him/her.";
+	    } else {
+	        $("#lesson").hide();
+	        $("#praise").hide();
+	    }
+    } else {
+	    if(perception) {
+            $("#lesson").show();
+	        $("#praise").show();
+		    document.getElementById("praise").innerHTML = "Well Done!";
+		    document.getElementById("lesson").innerHTML = "<h4>Lesson</h4>Perception is everything. Someone who sees you as disinterested - possibly a recruiter -  will not want to interact with you as much, and will certainly have a negative impression of you.";
+	    } else {
+	        $("#lesson").hide();
+	        $("#praise").hide();
+	    }
+	}
+	document.getElementById("prompt").innerHTML = "Okay, you are just about to meet a recruiter of your target company, and you're feeling really nervous.";
+	document.getElementById("c1").innerHTML = "Take a deep breath and compose yourself before speaking to them. Be confident.";
+	document.getElementById("c2").innerHTML = "Be ready to quickly trade any information with them and to get the hell out of there before they figure out how nervous you are.";
+	document.getElementById("c3").innerHTML = "Your hands are getting sweaty and you don't want to shake their hand like that because that'll make them instantly dislike you. Just leave. You should go and practice public speaking and come back better prepared for the next career fair.";
+}
+function s2_process() {
+	switch(choice) {
+		case 1:
+			setup = s3;
+			control = s3_process;
+			confidence = 1;
+			setup();
+			break;
+		case 2:
+			setup = s3;
+			control = s3_process;
+			setup();
+			break;
+		case 3:
+			setup = end;
+			control = s3_process;
+			runaway = 1;
+			setup();
+			break;
+		default:
+			return;
+	}
+}
+
+function s3() {
+	if(confidence) {
+        $("#lesson").show();
+	    $("#praise").show();
+		document.getElementById("praise").innerHTML = "Well Done!";
+		document.getElementById("lesson").innerHTML = "<h4>Lesson</h4>Always be confident. Have a normal, friendly, casual interaction with the person you want to network with. It is only a rapid fire drilling session if you make it one. Stand your ground.";
+	} else {
+	    $("#lesson").hide();
+	    $("#praise").hide();
+	}
+	document.getElementById("prompt").innerHTML = "Now you are right in front of the recruiter. How do you proceed?";
+	document.getElementById("c1").innerHTML = "Tell them all of your skills, including being able to say the alphabet backwards.";
+	document.getElementById("c2").innerHTML = "Tell them how you can satisfy each of their requirements with a specific skill.";
+	document.getElementById("c3").innerHTML = "Ask not what you can do for their company, ask what their company can do for you.";
+}
+function s3_process() {
+	switch(choice) {
+		case 1:
+			setup = s4;
+			control = s4_process;
+			setup();
+			break;
+		case 2:
+			setup = s4;
+			control = s4_process;
+			wiifm = 1;
+			setup();
+			break;
+		case 3:
+			setup = s4;
+			control = s4_process;
+			setup();
+			break;
+		default:
+			return;
+	}
+}
+
+
+function s4() {
+	if(wiifm) {
+	    $("#lesson").show();
+	    $("#praise").show();
+		document.getElementById("praise").innerHTML = "Well Done!";
+		document.getElementById("lesson").innerHTML = "<h4>Lesson</h4>Communicate to the recruiter or the person you want to network with that you have skills that benefit them in specific ways. The point is to clearly tell them what value <em>they</em> get specifically from hiring you.";
+	} else {
+	    $("#lesson").hide();
+	    $("#praise").hide();
+	}
+	document.getElementById("prompt").innerHTML = "Well, you got through networking with someone and they said they'd contact you. What next?";
+	document.getElementById("c1").innerHTML = "They said they'd contact you. Trust them to do their job.";
+	document.getElementById("c2").innerHTML = "Contact them the next day and remind them of who you are. Connect with them on LinkedIn.";
+	document.getElementById("c3").innerHTML = "Wait for a few weeks; if they still haven't contacted you yet, send them a email.";
+}
+
+function s4_process() {
+	switch(choice) {
+		case 1:
+			setup = end;
+			control = end;
+			setup();
+			break;
+		case 2:
+			setup = end;
+			control = end;
+			follow = 1;
+			setup();
+			break;
+		case 3:
+			setup = end;
+			control = end;
+			setup();
+			break;
+		default:
+			return;
+	}
+}
+
+function end() {
+	$("button").hide();
+	var valid = perception*confidence*wiifm*follow*(!nap)*(!runaway);
+	var message = "";
+	if(valid) {
+		document.getElementById("praise").innerHTML = "Congratulations " + name + "! You got the job!";
+	    $("#praise").show();
+	    $("#lesson").hide();
+	}
+	else {
+		document.getElementById("praise").innerHTML = "Ooh, sorry " + name + ", you didn't make the cut!";
+		message = "<h4>What did you do wrong?</h4>";
+	    $("#praise").show();
+	    $("#lesson").show();
+
+	    document.getElementById("prompt").innerHTML = "";
+	    if(!perception) {
+		    message += "You were resting against the wall. Perception is everything. Someone who sees you as disinterested - possibly a recruiter -  will not want to interact with you as much, and will certainly have a negative impression of you.<br><br>";
+	    }
+	    if(extra && !contact) {
+	        message += "You didn't use your time wisely and remained on a line where you wouldn't be able to reach the recruiter before the fair closed. Given that there were other recruiters from other companies available, you could have left the line and gone over to talk to those recruiters. Every contact is valuable, even if it isn't immediately clear how they might be. Every new person expands your network. One contact might know someone, who knows someone else, who knows someone else, etc. By taking the opportunity to network with new people, you give yourself another chance to get your dream job.";
+	    } else {
+	        if(!confidence) {
+		        message += "You tried to rush the conversation to get it over with. Always be confident. Have a normal, friendly, casual interaction with the person you want to network with. It is only a rapid fire drilling session if you make it one. Stand your ground.<br><br>";
+	        }
+	        if(!wiifm) {
+		        message += "Communicate to the recruiter or the person you want to network with that you have skills that benefit them in specific ways. The point is to clearly tell them what value <em>they</em> get specifically from hiring you.<br><br>";
+	        }
+	        if(!follow) {
+		        message += "Always follow up, and make sure you do so while your contact's memory of you would still be fresh . People will remember you more when you interact with them more, and it also looks good on you for being proactive.<br><br>";
+	        }
+	    }
+	    if(nap) {
+		    message = "<h4>What did you do wrong?</h4>Well, you napped. You snooze, you lose. By the time you came back, the fair area was being used for hosting a dance marathon. And you were hopelessly overdressed.";
+	    }
+	    if(runaway) {
+		    message = "<h4>What did you do wrong?</h4>What?! You ran away? Are you serious? Of course you didn't get the job! You were never even up at bat. Always take advantage of opportunities to network with people. The worst that can happen is that you won't impress them, which will happen if leave without networking with them anyway.";
+	        if(extra) {
+	            message += "<br><br>";
+	            message += "Every contact is valuable, even if it isn't immediately clear how they might be. Every new person expands your network. One contact might know someone, who knows someone else, who knows someone else, etc. By taking the opportunity to network with new people, you give yourself another chance to get your dream job.";
+	        }
+	    }
+	    var lesson = document.getElementById("lesson");
+	    lesson.innerHTML = message;
+	    lesson.className =
+       lesson.className.replace
+          ( /(?:^|\s)bg-info(?!\S)/g , 'bg-danger' );
+    }
+     $("#restart").show();
+     $("#prompt").hide();
+}
+
+function restart() {
+	perception = 0;
+	confidence = 0;
+	wiifm = 0;
+	nap = 0;
+	runaway = 0;
+
+	document.getElementById("praise").innerHTML = "";
+	document.getElementById("lesson").innerHTML = "";
+	var lesson = document.getElementById("lesson");
+	lesson.className =
+   lesson.className.replace
+      ( /(?:^|\s)bg-danger(?!\S)/g , 'bg-info' );
+
+	control = s1_process;
+	setup = s1;
+	$("button").show();
+	$("#prompt").show();
+	$("#restart").hide();
+	setup();
+}
+
+setup = s1;
+control = s1_process;
+
+</script>
+	<h3 class="text-left chapter-heading">Chapter 3: Networking</h3>
+	<hr/>
+	<div class="clearfix">
+		<div class="state">
+			<h3 id="praise"></h3>
+			<p class="bg-info" id="lesson"></p>
+			<blockquote id="prompt"></blockquote>
+			<div class="row">
+				<div class="col-md-4">
+					<button id="c1" type="button" onclick="choice = 1; control();" class="choice btn btn-primary btn-md"></button>
+				</div>
+
+				<div class="col-md-4">
+					<button id="c2" type="button" onclick="choice = 2; control();" class="choice btn btn-primary btn-md"></button>
+				</div>
+
+				<div class="col-md-4">
+					<button id="c3" type="button" onclick="choice = 3; control();" class="choice btn btn-primary btn-md"></button>
+				</div>
+			</div>
+			<button id="restart" onclick="restart()" class="btn btn-info btn-lg" style="display:none">Restart?</button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	$(document).ready(setup());
+	</script>
+{% endblock %}

@@ -1,0 +1,74 @@
+body {
+	background: url('../img/networking-in-space.jpg');
+	background-size: 100%;
+}
+
+.jumbotron {
+background: #b4e391; /* Old browsers */
+background: -moz-linear-gradient(top, #b4e391 0%, #61c419 9%, #61c419 23%, #61c419 58%, #2a8e00 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(9%,#61c419), color-stop(23%,#61c419), color-stop(58%,#61c419), color-stop(100%,#2a8e00)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #b4e391 0%,#61c419 9%,#61c419 23%,#61c419 58%,#2a8e00 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #b4e391 0%,#61c419 9%,#61c419 23%,#61c419 58%,#2a8e00 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #b4e391 0%,#61c419 9%,#61c419 23%,#61c419 58%,#2a8e00 100%); /* IE10+ */
+background: linear-gradient(to bottom, #b4e391 0%,#61c419 9%,#61c419 23%,#61c419 58%,#2a8e00 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#2a8e00',GradientType=0 ); /* IE6-9 */
+
+padding-top: 2em;
+padding-bottom: 2em;
+border-bottom: 1em double #2aae00;
+}
+.jumbotron h1 {
+	font-size: 4em;
+}
+
+.well {
+	border-radius: 2em;
+	border: 0.2em solid green;
+}
+
+.wrapper {
+	margin: 2% 20%;
+	vertical-align: top;
+}
+
+.wrapper .propic {
+	height: 10em;
+	width: 10em;
+	background:#fff;
+	border-radius: 0.3em;
+	border: 0.2em solid #aaa;
+	margin: 2em;
+}
+.propic img {
+	height: 100%;
+}
+
+.chapter-heading {
+	font-weight: bold;
+}
+
+#prompt {
+	background: #eecc33;
+}
+
+#lesson {
+	padding: 2%;
+	border-radius: 2em;
+}
+
+.state img {
+	height: 8em;
+	margin: 2em;
+	border: 0.5em double black;
+}
+
+button.choice {
+	word-wrap: break-word;
+	white-space:pre-wrap;
+	margin:1em;
+	height: 100%;
+}
+button.choice:before, button.choice:after {
+	content: " ";
+	display: table;
+}
