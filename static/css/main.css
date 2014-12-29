@@ -60,6 +60,7 @@ border-bottom: 1em double #2aae00;
 	height: 8em;
 	margin: 2em;
 	border: 0.5em double black;
+	border-radius: 0.5em;
 }
 
 button.choice {
